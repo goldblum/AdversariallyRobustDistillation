@@ -15,4 +15,4 @@ Here is an example of how to run our program:
 $ python main.py --teacher_path INSERT-YOUR-TEACHER-PATH
 ```
 ## Want to attack ARD?
-A MobileNetV2 ARD model distilled from a [TRADES](https://arxiv.org/pdf/1901.08573.pdf) WideResNet (34-10) teacher  on CIFAR-10 can be found at [link](https://drive.google.com/drive/folders/15Od-zi6HGwQoIym3AkLGzLVPaR8oH9UR?usp=sharing).
+A MobileNetV2 ARD model distilled from a [TRADES](https://arxiv.org/pdf/1901.08573.pdf) WideResNet (34-10) teacher on CIFAR-10 can be found [here](https://drive.google.com/drive/folders/15Od-zi6HGwQoIym3AkLGzLVPaR8oH9UR?usp=sharing).
