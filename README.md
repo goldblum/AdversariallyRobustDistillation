@@ -1,4 +1,4 @@
-# Adversarially Robust Distillation (ARD): A PyTorch implementation
+# Adversarially Robust Distillation (ARD): PyTorch implementation
 
 This repository contains Pytorch code for the ARD method from [paper](Insert ArXiv link here) "Adversarially Robust Distillation" by Micah Goldblum, Liam Fowl, Soheil Feizi, and Tom Goldstein.
 
