@@ -128,25 +128,23 @@ def train(epoch, optimizer):
         loss.backward()
         optimizer.step()
         train_loss += loss.item()
-        iterator.set_description(str(train_loss))
+        iterator.set_description(str(loss.item()))
     if (epoch+1)%args.save_period == 0:
         state = {
             'net': basic_net.state_dict(),
-            'epoch': epoch,
             'optimizer': optimizer.state_dict()
         }
         if not os.path.isdir('checkpoint/'+args.dataset+'/'+args.output+'/'):
             os.makedirs('checkpoint/'+args.dataset+'/'+args.output+'/', )
         torch.save(state, './checkpoint/'+args.dataset+'/'+args.output+'/epoch='+str(epoch)+'.t7')
-    print('train_loss:', train_loss)
+    print('Mean Training Loss:', train_loss/len(iterator))
     return train_loss
 
 def test(epoch, optimizer):
     net.eval()
-    correct = 0
+    adv_correct = 0
     natural_correct = 0
     total = 0
-    natural_acc = 0
     with torch.no_grad():
         iterator = tqdm(testloader, ncols=0, leave=False)
         for batch_idx, (inputs, targets) in enumerate(iterator):
@@ -161,14 +159,14 @@ def test(epoch, optimizer):
             iterator.set_description(str(adv_predicted.eq(targets).sum().item()/targets.size(0)))
     robust_acc = 100.*adv_correct/total
     natural_acc = 100.*natural_correct/total
-    print('Natural acc:', robust_acc)
-    print('Robust acc:', natural_acc)
+    print('Natural acc:', natural_acc)
+    print('Robust acc:', robust_acc)
     return natural_acc, robust_acc
 
 def main():
     lr = args.lr
     optimizer = optim.SGD(net.parameters(), lr=lr, momentum=0.9, weight_decay=2e-4)
-    for epoch in range(start_epoch, args.epochs):
+    for epoch in range(args.epochs):
         adjust_learning_rate(optimizer, epoch, lr)
         train_loss = train(epoch, optimizer)
         if (epoch+1)%args.val_period == 0:
