@@ -1,6 +1,6 @@
 # Adversarially Robust Distillation (ARD): PyTorch implementation
 
-This repository contains Pytorch code for the ARD method from [paper](Insert ArXiv link here) "Adversarially Robust Distillation" by Micah Goldblum, Liam Fowl, Soheil Feizi, and Tom Goldstein.
+This repository contains Pytorch code for the ARD method from ["Adversarially Robust Distillation"](insert arxiv link) by Micah Goldblum, Liam Fowl, Soheil Feizi, and Tom Goldstein.
 
 Adversarially Robust Distillation is a method for transferring robustness from a robust teacher network to the student network during distillation.  In our experiments, small ARD student models outperform adversarially trained models with identical architecture.
 
